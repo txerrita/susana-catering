@@ -92,7 +92,7 @@
 			font-size: 1.5em;
 		}
 
-	header
+		header
 	{
 	margin-top: 0;
 	margin-right: 0;
@@ -205,6 +205,11 @@
 				margin-bottom: 0;
 			}
 
+			#lista
+			{
+				text-align:left;
+				font-size: 0.8em;	
+			}
 	/* Image */
 
 		.image
