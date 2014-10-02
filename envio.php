@@ -1,46 +1,29 @@
 <?php
+$remitente = $_POST['email'];
+$destinatario = 'mail@dominio.com.ar'; // en esta línea va el mail del destinatario, puede ser una cuenta de hotmail, yahoo, gmail, etc
+$asunto = 'Consulta'; // acá se puede modificar el asunto del mail
+if (!$_POST){
+?>
 
-$nombre = $_POST['nombre'];
-$telefono = -$_POST['telefono'];
-$email = $_POST['email'];
-$mensaje = $_POST['mensaje'];
+<?php
+}else{
+	 
+    $cuerpo = "Nombre: " . $_POST["nombre"] . "\r \n"; 
+    $cuerpo .= "Email: " . $_POST["email"] . "\r \n";
+	$cuerpo .= "Teléfono: " . $_POST["telefono"] . "\r\n";
+	$cuerpo .= "Consulta: " . $_POST["mensaje"] . "\r\n";
+	//las líneas de arriba definen el contenido del mail. Las palabras que están dentro de $_POST[""] deben coincidir con el "name" de cada campo. 
+	// Si se agrega un campo al formulario, hay que agregarlo acá.
 
+    $headers  = "MIME-Version: 1.0\n";
+    $headers .= "Content-type: text/plain; charset=utf-8\n";
+    $headers .= "X-Priority: 3\n";
+    $headers .= "X-MSMail-Priority: Normal\n";
+    $headers .= "X-Mailer: php\n";
+    $headers .= "From: \"".$_POST['nombre']."\" <".$remitente.">\n";
 
-
-
-
-
-
-echo "<h3>El mensaje  que enviastes es :</h3>";
-echo("Nombre:");
-echo "<br>";
-echo $nombre;
-echo "<br>";
-echo("Email:");
-echo "<br>";
-echo $email;
-echo "<br>";
-echo("Mensaje:");
-echo "<br>";
-echo $mensaje;
-echo "<br>";
-
-echo("Gracias pronto atendere tu consulta");
-
-echo "<br>";
-
-echo "<br>";
-
-$aquien = "joserra.o@gmail.com";
-$asunto = "Has recibido un mensaje de SOLICITUD DE PRESUPUESTO";
-$mensajemail =$nombre." Con el email ".$email." y el teléfono".$telefono." mensaje enviado" .$mensaje;
-
-if (mail($aquien,$asunto,$mensajemail))
-{echo "Tu email se envió correctamente ";}
- else{echo "El envió de email ha fallado";}
-
-
-
-
-
+    mail($destinatario, $asunto, $cuerpo, $headers);
+    
+    include 'confirma.html'; //se debe crear un html que confirma el envío
+}
 ?>
