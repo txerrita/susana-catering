@@ -335,6 +335,7 @@
 			}
 		
 			form input[type="text"],
+			form input[type="tel"],
 			form input[type="email"],
 			form input[type="password"],
 			form select,
@@ -360,6 +361,7 @@
 			}
 
 				form input[type="text"],
+				form input [type="tel"],
 				form input[type="email"],
 				form input[type="password"],
 				form select
@@ -368,6 +370,7 @@
 				}
 
 				form input[type="text"]:focus,
+				form input [type="tel"],:focus,
 				form input[type="email"]:focus,
 				form input[type="password"]:focus,
 				form select:focus,
