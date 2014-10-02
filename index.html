@@ -247,15 +247,14 @@
 							
 							<form method="post" action="http://oyanguren.org/susana/envio.php">
 								<div class="row half">
-									<div class="6u"><input type="text" name="nombre" placeholder="Nombre" /></div>
-									<div class="6u"><input type="text" name="telefono" placeholder="Teléfono" /></div>
-                                    <div class="6u"><input type="email" name="email" placeholder="Email" /></div>
+									<div class="6u"><input type="text" name="nombre" placeholder="Nombre" required /></div>
+									<div class="6u"><input type="tel" name="telefono" placeholder="Teléfono" required /></div>
+                                    <div class="6u"><input type="email" name="email" placeholder="Email" required /></div>
 								</div>
 								<div class="row half">
 									<div class="12u">
-										<textarea name="mensaje" placeholder="Mensaje,
-             
-             ejemplo: Hola soy Juan y estaría interesado en una comida para 15 personas que sea de pintxos, paella y pasteles de bocado, para el día 18 de Noviembre en Espinosa de los Monteros. Gracias."></textarea>
+										<textarea name="mensaje" placeholder="Mensaje(ejemplo)            
+Hola soy Juan y estaría interesado en una comida para 15 personas que sea de pintxos, paella y pasteles de bocado, para el día 18 de Noviembre en Espinosa de los Monteros. Gracias."></textarea>
 									</div>
 								</div>
 								<div class="row">
