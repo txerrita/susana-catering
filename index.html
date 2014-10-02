@@ -243,17 +243,19 @@
 								<h2>Contacto</h2>
 							</header>
 
-							<p>Si tienes pensado hacer algún evento y necesitas un presupuesto, envíame un mensaje con tu idea, el número de asistentes y la fecha prevista. Me pondré en contacto contigo lo más pronto posible.</p>
+							<p>Si tienes pensado hacer algún evento y necesitas un presupuesto, envíame un mensaje con tu idea, el número de asistentes y la fecha prevista. Me pondré en contacto contigo lo antes posible.</p>
 							
-							<form method="post" action="#">
+							<form method="post" action="envio.php">
 								<div class="row half">
-									<div class="6u"><input type="text" name="name" placeholder="Nombre" /></div>
-									<div class="6u"><input type="text" name="email" placeholder="Email" /></div>
-                                    <div class="6u"><input type="text" name="telefono" placeholder="Teléfono" /></div>
+									<div class="6u"><input type="text" name="nombre" placeholder="Nombre" /></div>
+									<div class="6u"><input type="text" name="telefono" placeholder="Teléfono" /></div>
+                                    <div class="6u"><input type="email" name="email" placeholder="Email" /></div>
 								</div>
 								<div class="row half">
 									<div class="12u">
-										<textarea name="message" placeholder="Mensaje"></textarea>
+										<textarea name="mensaje" placeholder="Mensaje,
+             
+             ejemplo: Hola soy Juan y estaría interesado en una comida para 15 personas que sea de pintxos, paella y pasteles de bocado, para el día 18 de Noviembre en Espinosa de los Monteros. Gracias."></textarea>
 									</div>
 								</div>
 								<div class="row">
