@@ -245,26 +245,32 @@
 
 							<p>Si tienes pensado hacer algún evento y necesitas un presupuesto, envíame un mensaje con tu idea, el número de asistentes y la fecha prevista. Me pondré en contacto contigo lo antes posible.</p>
 							
-							<form method="post" action="mailto:joserra.o@gmail.com">
+							<form method="post" action="http://oyanguren.org/susana/envio.php">
 								<div class="row half">
-									<div class="6u"><input type="text" name="nombre" placeholder="Nombre" required /></div>
-									<div class="6u"><input type="tel" name="telefono" placeholder="Teléfono" required /></div>
-                                    <div class="6u"><input type="email" name="email" placeholder="Email" required /></div>
+									<div class="6u"><input type="text" name="nombre" id="nombre" placeholder="Nombre" required /></div>
+									<div class="6u"><input type="tel" name="telefono" id="telefono" placeholder="Teléfono" required /></div>
+                                    <div class="6u"><input type="email" name="email" id="email" placeholder="Email" required /></div>
 								</div>
 								<div class="row half">
 									<div class="12u">
-										<textarea name="mensaje" placeholder="Mensaje(ejemplo)            
+										<textarea name="mensaje" id="mensaje" placeholder="Mensaje(ejemplo)            
 Hola soy Juan y estaría interesado en una comida para 15 personas que sea de pintxos, paella y pasteles de bocado, para el día 18 de Noviembre en Espinosa de los Monteros. Gracias."></textarea>
 									</div>
 								</div>
 								<div class="row">
 									<div class="12u">
-										<input type="submit" value="Enviar Mensaje" />
+										<input type="submit" id="botonenviar" value="Enviar Mensaje" />
 									</div>
 								</div>
 							</form>
 
 						</div>
+                         <div id="exito" style="display:none">
+          					    Sus datos han sido recibidos con éxito.
+       					 </div>
+       					 <div id="fracaso" style="display:none">
+            					Se ha producido un error durante el envío de datos.
+        				 </div>
 					</section>
 			
 			</div>
@@ -278,6 +284,49 @@ Hola soy Juan y estaría interesado en una comida para 15 personas que sea de pi
 					</ul>
 				
 			</div>
+<!-- Códigos de validación para el formulario -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script>
+		function validaForm(){
+    // Campos de texto
+    if($("#nombre").val() == ""){
+        alert("El campo Nombre no puede estar vacío.");
+        $("#nombre").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+        return false;
+    }
+    if($("#telefono").val() == ""){
+        alert("El campo Teléfono no puede estar vacío.");
+        $("#telefono").focus();
+        return false;
+    }
+    if($("#email").val() == ""){
+        alert("El campo Email no puede estar vacío.");
+        $("#email").focus();
+        return false;
+    }
+	if($("#mensaje").val() == ""){
+        alert("El campo Mensaje no puede estar vacío.");
+        $("#mensaje").focus();
+        return false;
+    }
 
+    return true; // Si todo está correcto
+}
+
+$(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
+    $("#botonenviar").click( function() {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
+        if(validaForm()){                               // Primero validará el formulario.
+            $.post("http://oyanguren.org/susana/envio.php",$("#formdata").serialize(),function(res){
+                $("#formulario").fadeOut("slow");   // Hacemos desaparecer el div "formulario" con un efecto fadeOut lento.
+                if(res == 1){
+                    $("#exito").delay(500).fadeIn("slow");      // Si hemos tenido éxito, hacemos aparecer el div "exito" con un efecto fadeIn lento tras un delay de 0,5 segundos.
+                } else {
+                    $("#fracaso").delay(500).fadeIn("slow");    // Si no, lo mismo, pero haremos aparecer el div "fracaso"
+                }
+            });
+        }
+    });    
+});
+	</script>
 	</body>
 </html>

@@ -1,29 +1,39 @@
 <?php
-$remitente = $_POST['email'];
-$destinatario = 'joserra.o@gmail.com'; // en esta línea va el mail del destinatario, puede ser una cuenta de hotmail, yahoo, gmail, etc
-$asunto = 'Consulta'; // acá se puede modificar el asunto del mail
-if (!$_POST){
-?>
+/*
+	Creado por DaríoBF - www.dariobf.com
+	Script que gestiona el envío de un formulario por correo electrónico a la cuenta indicada.
+*/
 
-<?php
-}else{
-	 
-    $cuerpo = "Nombre: " . $_POST["nombre"] . "\r \n"; 
-    $cuerpo .= "Email: " . $_POST["email"] . "\r \n";
-	$cuerpo .= "Teléfono: " . $_POST["telefono"] . "\r \n";
-	$cuerpo .= "Consulta: " . $_POST["mensaje"] . "\r \n";
-	//las líneas de arriba definen el contenido del mail. Las palabras que están dentro de $_POST[""] deben coincidir con el "name" de cada campo. 
-	// Si se agrega un campo al formulario, hay que agregarlo acá.
+//Correo de destino; donde se enviará el correo.
+$correoDestino = "joserra.o@gmail.com";
 
-    $headers  = "MIME-Version: 1.0\n";
-    $headers .= "Content-type: text/plain; charset=utf-8\n";
-    $headers .= "X-Priority: 3\n";
-    $headers .= "X-MSMail-Priority: Normal\n";
-    $headers .= "X-Mailer: php\n";
-    $headers .= "From: \"".$_POST['nombre']."\" <".$remitente.">\n";
+//Texto emisor; sólo lo leerá quien reciba el contenido.
+$textoEmisor = "MIME-VERSION: 1.0\r\n";
+$textoEmisor .= "Content-type: text/html; charset=UTF-8\r\n";
+$textoEmisor .= "Consulta de PRESUPUESTO";
 
-    mail($destinatario, $asunto, $cuerpo, $headers);
-    
-    echo"<script>alert('Mensaje enviado correctamente')</script>";
-}
+/*
+	Recopilo los datos vía POST
+	Con strip_tags suprimo etiquetas HTML y php para evitar una posible inyección.
+	Como no gestiona base de datos no es necesario limpiar de inyección SQL.
+*/
+$nombre = strip_tags($_POST['nombre']);
+$telefono = strip_tags($_POST['telefono']);
+$email = strip_tags($_POST['email']);
+$mensaje = strip_tags($_POST['mensaje']);
+$fecha = time();
+$fechaFormateada = date("j/n/Y", $fecha);
+
+//Formateo el asunto del correo
+$asunto = "Contacto APP_$nombre $telefono; $empresa";
+
+//Formateo el cuerpo del correo
+
+$cuerpo = "<b>Enviado por:</b> " . $nombre . ", " . " el día " . $fechaFormateada . "<br />";
+$cuerpo .= "<b>Teléfono de contacto: </b>" . $telefono . "<br />";
+$cuerpo .= "<b>E-mail:</b> " . $email . "<br />";
+$cuerpo .= "<b>Comentario:</b> " . $mensaje;
+
+// Envío el mensaje
+mail( $correoDestino, $asunto, $cuerpo, $textoEmisor);
 ?>
