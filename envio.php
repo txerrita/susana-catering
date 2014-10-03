@@ -25,7 +25,7 @@ $fecha = time();
 $fechaFormateada = date("j/n/Y", $fecha);
 
 //Formateo el asunto del correo
-$asunto = "Contacto APP_$nombre $telefono; $empresa";
+$asunto = "Solicitud PRESUPUESTO. $nombre $telefono";
 
 //Formateo el cuerpo del correo
 
