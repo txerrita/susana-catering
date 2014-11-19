@@ -17,7 +17,7 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
-       	<noscript>
+		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-wide.css" />
@@ -245,7 +245,7 @@
 
 							<p>Si tienes pensado hacer algún evento y necesitas un presupuesto, envíame un mensaje con tu idea, el número de asistentes y la fecha prevista. Me pondré en contacto contigo lo antes posible.</p>
 							<div id="formulario">
-								<form method="post" id="formdata">
+								<form method="post" id="formdata" data-ajax="false">
 								<div class="row half">
 									<div class="6u"><input type="text" name="nombre" id="nombre" placeholder="Nombre" required /></div>
 									<div class="6u"><input type="tel" name="telefono" id="telefono" placeholder="Teléfono" required /></div>
@@ -291,8 +291,10 @@ Hola soy Juan y estaría interesado en una comida para 15 personas que sea de pi
 		function validaForm(){
     // Campos de texto
     if($("#nombre").val() == ""){
-      	alert("El campo Nombre no puede estar vacío.");
-        $("#nombre").focus();       
+		navigator.notification.alert('El campo NOMBRE no puede estar vacío.',null,'SUSANA CATERING', 'Aceptar');
+        
+		//alert("El campo Nombre no puede estar vacío.");
+        $("#nombre").focus();       
         return false;
     }
     if($("#telefono").val() == ""){
@@ -317,20 +319,19 @@ Hola soy Juan y estaría interesado en una comida para 15 personas que sea de pi
 $(document).ready( function() {   // Esta parte del código se ejecutará automáticamente cuando la página esté lista.
     $("#botonenviar").click( function() {     // Con esto establecemos la acción por defecto de nuestro botón de enviar.
         if(validaForm()){                               // Primero validará el formulario.
-            $.post("http://oyanguren.org/susana/envio.php",$("#formdata").serialize(),function(res){
-                // $("#formulario").fadeOut("slow");   // Hacemos desaparecer el div "formulario" con un efecto fadeOut lento.
-                //if(res == 1){
-                    alert("Su mensaje ha sido enviado con éxito. Muchas gracias");
-					// Si hemos tenido éxito, hacemos aparecer el div "exito" con un efecto fadeIn lento tras un delay de 0,5 segundos.
-             //   } else {
-                  //  alert("Se ha producido un error durante el envío de datos.");
-					// Si no, lo mismo, pero haremos aparecer el div "fracaso"
-          //      }
+            $.post("http://www.oyanguren.org/susana/envio.php",$("#formdata").serialize(),function(res){
+                $("#formulario").fadeOut("slow");   // Hacemos desaparecer el div "formulario" con un efecto fadeOut lento.
+                if(res == 1){
+                    $("#exito").delay(500).fadeIn("slow");      // Si hemos tenido éxito, hacemos aparecer el div "exito" con un efecto fadeIn lento tras un delay de 0,5 segundos.
+                } else {
+                    $("#fracaso").delay(500).fadeIn("slow");    // Si no, lo mismo, pero haremos aparecer el div "fracaso"
+                }
             });
         }
     });    
 });
 	</script>
-   
+    
+
 	</body>
 </html>
