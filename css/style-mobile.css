@@ -8,10 +8,8 @@
 /* Basic                                                                         */
 /*********************************************************************************/
 
-	html, body,input,textarea,select,main,container,section
+	body,input,textarea,select
 	{
-		height: 100%;
-		min-height: 100%;
 		font-size: 14pt;
 	}
 
@@ -19,17 +17,13 @@
 	{
 		font-size: 3em;
 		color:#333;
-		line-height: 1.2em;
+		
 		letter-spacing: 0;
 		font-weight: 300;
-		
 	}
 
 	.container
 	{
-		
-		height: 100%;
-		min-height: 100%;
 		padding: 15px 5px 15px 5px;
 	}
 
@@ -60,31 +54,23 @@
 
 	#main
 	{
-		min-height: 100%;
-		margin: 0 auto;
-		height: 100%;
-		overflow: hidden;
 	}
 
 		#main > section
 		{
-			height: 100%;
-			min-height: 100%;
 			padding: 0 0;
 		}
 
 		#main section.cover
 		{
-			height: 100%;
-			min-height: 100%;
-			padding: 20 30;
+			padding: 4em 0em;
 		}
 		
 			#main section.cover header
 			{
-				padding: 0 0;
+				padding: 0 1em;
 			}
-		
+			
 /*********************************************************************************/
 /* Footer                                                                        */
 /*********************************************************************************/
