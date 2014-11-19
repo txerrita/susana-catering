@@ -10,8 +10,8 @@ $correoDestino = "joserra.o@gmail.com";
 //Texto emisor; sólo lo leerá quien reciba el contenido.
 $textoEmisor = "MIME-VERSION: 1.0\r\n";
 $textoEmisor .= "Content-type: text/html; charset=UTF-8\r\n";
-$textoEmisor .= 'FROM: APP <$email> '."<br />";
-$textoEmisor .= "Consulta de PRESUPUESTO"."\r\n";
+$textoEmisor .= 'FROM: APP <susana.g.solana@gmail.com> '."\r\n";
+$textoEmisor .= "Consulta de PRESUPUESTO"."<br />";
 
 /*
 	Recopilo los datos vía POST
