@@ -10,8 +10,8 @@ $correoDestino = "joserra.o@gmail.com";
 //Texto emisor; sólo lo leerá quien reciba el contenido.
 $textoEmisor = "MIME-VERSION: 1.0\r\n";
 $textoEmisor .= "Content-type: text/html; charset=UTF-8\r\n";
-$textoEmisor .= 'FROM: APP <susana.g.solana@gmail.com> '."\r\n";
-$textoEmisor .= "Consulta de PRESUPUESTO";
+$textoEmisor .= 'FROM: APP <$email> '."<br />";
+$textoEmisor .= "Consulta de PRESUPUESTO"."\r\n";
 
 /*
 	Recopilo los datos vía POST
@@ -29,19 +29,12 @@ $fechaFormateada = date("j/n/Y", $fecha);
 $asunto = "Solicitud PRESUPUESTO. $nombre $telefono";
 
 //Formateo el cuerpo del correo
-$cuerpo ="";
-$cuerpo .= "<b>Enviado por:</b> " . $nombre . ", " . " el día " . $fechaFormateada . "<br />";
+$cuerpo = "<b>Enviado por:</b> " . $nombre . ", " . " el día " . $fechaFormateada . "<br />";
 $cuerpo .= "<b>Teléfono de contacto: </b>" . $telefono . "<br />";
 $cuerpo .= "<b>E-mail:</b> " . $email . "<br />";
 $cuerpo .= "<b>Comentario:</b> " . $mensaje;
 
 // Envío el mensaje
-if(mail( $correoDestino, $asunto, $cuerpo, $textoEmisor))
-{
-//Confirmación mensaje Ok
-echo("1");
-}else{
-//Error en el envió
-echo("0");
-}
+mail( $correoDestino, $asunto, $cuerpo, $textoEmisor)
+
 ?>
