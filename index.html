@@ -291,7 +291,7 @@ Hola soy Juan y estaría interesado en una comida para 15 personas que sea de pi
 		function validaForm(){
     // Campos de texto
     if($("#nombre").val() == ""){
-		alert("El campo Nombre no puede estar vacío.");
+		navigator.notification.alert('El campo NOMBRE no puede estar vacío.',null,'SUSANA CATERING', 'Aceptar');//alert("El campo Nombre no puede estar vacío.");
         $("#nombre").focus();       
         return false;
     }
