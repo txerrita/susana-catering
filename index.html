@@ -18,12 +18,7 @@
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
         <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-        <script>
-			document.addEventListener('deviceready', function () {
-        		function alerta(mensaje,titulo,boton) {
-        		navigator.notification.alert(mensaje,titulo,boton)};
-       		}, false); 
-    	</script>
+        
     	<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -293,22 +288,22 @@ Hola soy Juan y estaría interesado en una comida para 15 personas que sea de pi
 		function validaForm(){
     // Campos de texto
     if($("#nombre").val() == ""){
-		navigator.notification.alert('El campo NOMBRE no puede estar vacío.','SUSANA CATERING', 'Aceptar');
+		alert('El campo NOMBRE no puede estar vacío.');
         $("#nombre").focus();       
         return false;
     }
     if($("#telefono").val() == ""){
-        navigator.notification.alert('El campo TELÉFONO no puede estar vacío.','SUSANA CATERING', 'Aceptar');
+        alert('El campo TELÉFONO no puede estar vacío.');
         $("#telefono").focus();
         return false;
     }
     if($("#email").val() == ""){
-        navigator.notification.alert('El campo EMAIL no puede estar vacío.','SUSANA CATERING', 'Aceptar');
+        alert('El campo EMAIL no puede estar vacío.');
         $("#email").focus();
         return false;
     }
 	if($("#mensaje").val() == ""){
-        navigator.notification.alert('El campo MENSAJE no puede estar vacío.','SUSANA CATERING', 'Aceptar');
+        alert('El campo MENSAJE no puede estar vacío.');
         $("#mensaje").focus();
         return false;
     }
@@ -322,7 +317,7 @@ $(document).ready( function() {   // Esta parte del código se ejecutará auto
             $.post("http://www.oyanguren.org/susana/envio.php",$("#formdata").serialize()
 			
 			);
-			navigator.notification.alert('Su mensaje ha sido enviado. Me pondré en contacto contigo lo antes posible. Muchas gracias.','SUSANA CATERING', 'Aceptar');
+			alert('Su mensaje ha sido enviado. Me pondré en contacto contigo lo antes posible. Muchas gracias.');
 			
         }
     });    
